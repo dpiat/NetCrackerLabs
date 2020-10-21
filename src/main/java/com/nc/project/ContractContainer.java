@@ -91,19 +91,32 @@ public class ContractContainer {
 
     public void clear() {
         for (int i = 0; i < size; i++) {
-            this.array[i] = null;
+            array[i] = null;
         }
-        this.array = null;
+        array = null;
         size = 0;
     }
 
     public boolean contains(Contract t) {
         for (int i = 0; i < size; i++) {
-            if (this.array[i].equals(t)) {
+            if (array[i].equals(t)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        for (int i = 0; i < size; i++) {
+            sb.append(array[i].toString());
+            if (i + 1 != size) {
+                sb.append(',').append(' ');
+            }
+        }
+        sb.append(']');
+        return sb.toString();
     }
 
     private void rangeCheckForAdd(int index) {
