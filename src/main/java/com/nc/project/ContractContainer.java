@@ -13,16 +13,24 @@ public class ContractContainer {
 
     public void add(int index, Contract t){
         rangeCheckForAdd(index);
+        Contract[] newArray =  new Contract[size+1];
+        for (int i = 0; i < index; i++) {
+            newArray[i] = array[i];
+        }
+        newArray[index] = t;
+        for (int i = index; i < size; i++) {
+            newArray[i + 1] = array[i];
+        }
+        this.array = newArray;
+        this.size += 1;
+    }
+
+    public void add(Contract t) { // type mb is boolean
         Contract[] new_array =  new Contract[size+1];
-        for (int i = 0; i < index; i++)
-        {
-            new_array[i] = array[i];
+        for (int i = 0; i < size; i++) {
+            new_array[i] = this.array[i];
         }
-        new_array[index] = t;
-        for (int i = index; i < size; i++)
-        {
-            new_array[i + 1] = array[i];
-        }
+        new_array[size] = t;
         this.array = new_array;
         this.size += 1;
     }
