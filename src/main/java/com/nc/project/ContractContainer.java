@@ -54,6 +54,30 @@ public class ContractContainer {
         return newArray[index];
     }
 
+    public boolean remove(Contract t) {
+        int index = -1;
+        for (int i = 0; i < size; i++) {
+            if (this.array[i] == t) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            Contract[] newArray = new Contract[size - 1];
+            for (int i = 0; i < index; i++) {
+                newArray[i] = this.array[i];
+            }
+            for (int i = index + 1; i < size; i++) {
+                newArray[i-1] = this.array[i];
+            }
+            array = newArray;
+            size -= 1;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private void rangeCheckForAdd(int index) {
         if (index > size || index < 0)
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
