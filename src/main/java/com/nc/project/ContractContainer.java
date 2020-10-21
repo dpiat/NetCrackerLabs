@@ -35,11 +35,20 @@ public class ContractContainer {
         this.size += 1;
     }
 
+    public Contract get(int index) {
+        checkIndex(index);
+        return array[index];
+    }
+
     private void rangeCheckForAdd(int index) {
         if (index > size || index < 0)
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
     }
 
+    private void checkIndex(int index) {
+        if (index >= size || index < 0)
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+    }
 
     private String outOfBoundsMsg(int index) {
         return "Index: " + index + ", Size: " + size;
