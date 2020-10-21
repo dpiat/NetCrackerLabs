@@ -21,23 +21,37 @@ public class ContractContainer {
         for (int i = index; i < size; i++) {
             newArray[i + 1] = array[i];
         }
-        this.array = newArray;
-        this.size += 1;
+        array = newArray;
+        size += 1;
     }
 
     public void add(Contract t) { // type mb is boolean
-        Contract[] new_array =  new Contract[size+1];
+        Contract[] newArray =  new Contract[size+1];
         for (int i = 0; i < size; i++) {
-            new_array[i] = this.array[i];
+            newArray[i] = this.array[i];
         }
-        new_array[size] = t;
-        this.array = new_array;
-        this.size += 1;
+        newArray[size] = t;
+        array = newArray;
+        size += 1;
     }
 
     public Contract get(int index) {
         checkIndex(index);
         return array[index];
+    }
+
+    public Contract remove(int index) {
+        checkIndex(index);
+        Contract[] newArray = new Contract[size - 1];
+        for (int i = 0; i < index; i++) {
+            newArray[i] = this.array[i];
+        }
+        for (int i = index + 1; i < size; i++) {
+            newArray[i-1] = this.array[i];
+        }
+        array = newArray;
+        size -= 1;
+        return newArray[index];
     }
 
     private void rangeCheckForAdd(int index) {
