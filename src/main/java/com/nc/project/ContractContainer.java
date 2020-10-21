@@ -28,7 +28,7 @@ public class ContractContainer {
     public void add(Contract t) { // type mb is boolean
         Contract[] newArray =  new Contract[size+1];
         for (int i = 0; i < size; i++) {
-            newArray[i] = this.array[i];
+            newArray[i] = array[i];
         }
         newArray[size] = t;
         array = newArray;
@@ -44,10 +44,10 @@ public class ContractContainer {
         checkIndex(index);
         Contract[] newArray = new Contract[size - 1];
         for (int i = 0; i < index; i++) {
-            newArray[i] = this.array[i];
+            newArray[i] = array[i];
         }
         for (int i = index + 1; i < size; i++) {
-            newArray[i-1] = this.array[i];
+            newArray[i-1] = array[i];
         }
         array = newArray;
         size -= 1;
@@ -57,7 +57,7 @@ public class ContractContainer {
     public boolean remove(Contract t) {
         int index = -1;
         for (int i = 0; i < size; i++) {
-            if (this.array[i] == t) {
+            if (array[i] == t) {
                 index = i;
                 break;
             }
@@ -65,10 +65,10 @@ public class ContractContainer {
         if (index != -1) {
             Contract[] newArray = new Contract[size - 1];
             for (int i = 0; i < index; i++) {
-                newArray[i] = this.array[i];
+                newArray[i] = array[i];
             }
             for (int i = index + 1; i < size; i++) {
-                newArray[i-1] = this.array[i];
+                newArray[i-1] = array[i];
             }
             array = newArray;
             size -= 1;
@@ -76,6 +76,13 @@ public class ContractContainer {
         } else {
             return false;
         }
+    }
+
+    public Contract set(int index, Contract element) {
+        checkIndex(index);
+        Contract oldValue = array[index];
+        array[index] = element;
+        return oldValue;
     }
 
     private void rangeCheckForAdd(int index) {
