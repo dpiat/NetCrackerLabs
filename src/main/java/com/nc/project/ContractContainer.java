@@ -85,6 +85,27 @@ public class ContractContainer {
         return oldValue;
     }
 
+    public int size() {
+        return size;
+    }
+
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            this.array[i] = null;
+        }
+        this.array = null;
+        size = 0;
+    }
+
+    public boolean contains(Contract t) {
+        for (int i = 0; i < size; i++) {
+            if (this.array[i].equals(t)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void rangeCheckForAdd(int index) {
         if (index > size || index < 0)
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
