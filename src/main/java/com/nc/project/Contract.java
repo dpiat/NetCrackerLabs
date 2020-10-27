@@ -15,6 +15,38 @@ public class Contract {
         this.client = client;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Date getStartContract() {
+        return startContract;
+    }
+
+    public void setStartContract(Date startContract) {
+        this.startContract = startContract;
+    }
+
+    public Date getEndContract() {
+        return endContract;
+    }
+
+    public void setEndContract(Date endContract) {
+        this.endContract = endContract;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -30,4 +62,5 @@ public class Contract {
     public int hashCode() {
         return Objects.hash(id, startContract, endContract, client);
     }
+
 }

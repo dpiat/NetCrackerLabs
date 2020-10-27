@@ -11,4 +11,21 @@ public class MobileContract extends Contract {
         this.cntMin = cntMin;
         this.cntMessages = cntMessages;
     }
+
+    public long getCntMin() {
+        return cntMin;
+    }
+
+    public void setCntMin(long cntMin) {
+        this.cntMin = cntMin;
+    }
+
+    public long getCntMessages() {
+        return cntMessages;
+    }
+
+    public void setCntMessages(long cntMessages) {
+        this.cntMessages = cntMessages;
+    }
 }
+

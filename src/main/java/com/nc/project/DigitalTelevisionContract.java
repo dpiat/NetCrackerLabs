@@ -9,4 +9,12 @@ public class DigitalTelevisionContract extends Contract {
         super(id, startContract, endContract, client);
         this.channelPackage = channelPackage;
     }
+
+    public ChannelPackage getChannelPackage() {
+        return channelPackage;
+    }
+
+    public void setChannelPackage(ChannelPackage channelPackage) {
+        this.channelPackage = channelPackage;
+    }
 }

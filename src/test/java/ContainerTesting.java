@@ -1,18 +1,16 @@
 import com.nc.project.Client;
 import com.nc.project.Contract;
-import com.nc.project.ContractContainer;
+import com.nc.project.Repository;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.security.PublicKey;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class ContainerTesting {
     @Test
     public void testAddElemToEnd() {
-        ContractContainer contractContainer = new ContractContainer();
+        Repository contractContainer = new Repository();
         Assert.assertEquals(0, contractContainer.size());
         Contract contract = new Contract(1, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), 111111111L));
         contractContainer.add(contract);
@@ -22,7 +20,7 @@ public class ContainerTesting {
 
     @Test
     public void testAddElemOnIndex() {
-        ContractContainer contractContainer = new ContractContainer();
+        Repository contractContainer = new Repository();
         Assert.assertEquals(0, contractContainer.size());
         Contract contract = new Contract(1, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), 111111111L));
         contractContainer.add(0, contract);
@@ -32,7 +30,7 @@ public class ContainerTesting {
 
     @Test
     public void testGetElemByIndex() {
-        ContractContainer contractContainer = new ContractContainer();
+        Repository contractContainer = new Repository();
         Contract contract = new Contract(1, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), 111111111L));
         contractContainer.add(0, contract);
         Assert.assertEquals(contract, contractContainer.get(0));
@@ -40,7 +38,7 @@ public class ContainerTesting {
 
     @Test
     public void testRemoveElemByIndex() {
-        ContractContainer contractContainer = new ContractContainer();
+        Repository contractContainer = new Repository();
         Contract contract1 = new Contract(1, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), 111111111L));
         Contract contract2 = new Contract(2, new Date(100L), new Date(101L), new Client(2, "Podruchnie Genadiy Vladimirovich", new Date(1998, Calendar.MARCH, 18), 1111112323L));
         contractContainer.add(contract1);
@@ -53,7 +51,7 @@ public class ContainerTesting {
 
     @Test
     public void testRemoveElem() {
-        ContractContainer contractContainer = new ContractContainer();
+        Repository contractContainer = new Repository();
         Contract contract1 = new Contract(1, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), 111111111L));
         Contract contract2 = new Contract(2, new Date(100L), new Date(101L), new Client(2, "Podruchnie Genadiy Vladimirovich", new Date(1998, Calendar.MARCH, 18), 1111112323L));
         contractContainer.add(contract1);
@@ -66,7 +64,7 @@ public class ContainerTesting {
 
     @Test
     public void testSetElemOnIndex() {
-        ContractContainer contractContainer = new ContractContainer();
+        Repository contractContainer = new Repository();
         Contract contract1 = new Contract(1, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), 111111111L));
         Contract contract2 = new Contract(2, new Date(100L), new Date(101L), new Client(2, "Podruchnie Genadiy Vladimirovich", new Date(1998, Calendar.MARCH, 18), 1111112323L));
         Contract contract3 = new Contract(3, new Date(100L), new Date(101L), new Client(3, "Ivanov Ivan Ivanovich", new Date(2003, Calendar.JULY, 27), 111111211L));
@@ -80,7 +78,7 @@ public class ContainerTesting {
 
     @Test
     public void testContainsElem() {
-        ContractContainer contractContainer = new ContractContainer();
+        Repository contractContainer = new Repository();
         Contract contract1 = new Contract(1, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), 111111111L));
         Contract contract2 = new Contract(2, new Date(100L), new Date(101L), new Client(2, "Podruchnie Genadiy Vladimirovich", new Date(1998, Calendar.MARCH, 18), 1111112323L));
         contractContainer.add(contract1);
@@ -90,7 +88,7 @@ public class ContainerTesting {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testIndexOutOfBoundsException() {
-        ContractContainer emptyList = new ContractContainer();
+        Repository emptyList = new Repository();
         Contract contract = emptyList.get(0);
     }
 }

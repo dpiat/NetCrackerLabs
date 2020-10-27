@@ -11,6 +11,14 @@ public class InternetContract extends Contract {
         this.maxSpeed = maxSpeed;
     }
 
+    public long getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(long maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

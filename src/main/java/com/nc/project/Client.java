@@ -16,6 +16,38 @@ public class Client {
         this.passport = passport;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFIO() {
+        return FIO;
+    }
+
+    public void setFIO(String FIO) {
+        this.FIO = FIO;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public long getPassport() {
+        return passport;
+    }
+
+    public void setPassport(long passport) {
+        this.passport = passport;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
