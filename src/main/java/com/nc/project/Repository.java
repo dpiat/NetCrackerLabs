@@ -90,8 +90,7 @@ public class Repository {
 
     /**
      * Removes the first occurrence of the specified element from this repository,
-     * if it is present. If the repository does not contain the element, it is
-     * unchanged.
+     * if it is present.
      *
      * @param t element to be removed from this repository, if present
      * @return {@code true} if this repository contained the specified element

@@ -1,12 +1,13 @@
 package com.nc.project;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class DigitalTelevisionContract extends Contract {
     ChannelPackage channelPackage;
 
-    public DigitalTelevisionContract(long id, Date startContract, Date endContract, Client client, ChannelPackage channelPackage) {
-        super(id, startContract, endContract, client);
+    public DigitalTelevisionContract(long id, long numberConract, Date startContract, Date endContract, Client client, ChannelPackage channelPackage) {
+        super(id, numberConract, startContract, endContract, client);
         this.channelPackage = channelPackage;
     }
 
@@ -16,5 +17,19 @@ public class DigitalTelevisionContract extends Contract {
 
     public void setChannelPackage(ChannelPackage channelPackage) {
         this.channelPackage = channelPackage;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        DigitalTelevisionContract that = (DigitalTelevisionContract) o;
+        return channelPackage == that.channelPackage;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), channelPackage);
     }
 }

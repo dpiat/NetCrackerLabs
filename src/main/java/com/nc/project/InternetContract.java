@@ -6,8 +6,8 @@ import java.util.Objects;
 public class InternetContract extends Contract {
     private long maxSpeed;
 
-    public InternetContract(long id, Date startContract, Date endContract, Client client, long maxSpeed) {
-        super(id, startContract, endContract, client);
+    public InternetContract(long id, long numberConract, Date startContract, Date endContract, Client client, long maxSpeed) {
+        super(id, numberConract, startContract, endContract, client);
         this.maxSpeed = maxSpeed;
     }
 

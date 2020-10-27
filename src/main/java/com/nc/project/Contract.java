@@ -4,12 +4,14 @@ import java.util.Objects;
 
 public class Contract {
     private long id;
+    private long numberConract;
     private Date startContract;
     private Date endContract;
     private Client client;
 
-    public Contract(long id, Date startContract, Date endContract, Client client) {
+    public Contract(long id, long numberConract, Date startContract, Date endContract, Client client) {
         this.id = id;
+        this.numberConract = numberConract;
         this.startContract = startContract;
         this.endContract = endContract;
         this.client = client;
@@ -21,6 +23,14 @@ public class Contract {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getNumberConract() {
+        return numberConract;
+    }
+
+    public void setNumberConract(long numberConract) {
+        this.numberConract = numberConract;
     }
 
     public Date getStartContract() {
@@ -53,6 +63,7 @@ public class Contract {
         if (o == null || getClass() != o.getClass()) return false;
         Contract contract = (Contract) o;
         return id == contract.id &&
+                numberConract == contract.numberConract &&
                 Objects.equals(startContract, contract.startContract) &&
                 Objects.equals(endContract, contract.endContract) &&
                 Objects.equals(client, contract.client);
@@ -60,7 +71,6 @@ public class Contract {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, startContract, endContract, client);
+        return Objects.hash(id, numberConract, startContract, endContract, client);
     }
-
 }
