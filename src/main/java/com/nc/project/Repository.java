@@ -59,6 +59,36 @@ public class Repository {
     }
 
     /**
+     * Removes the specified element with id if it is present in this repository.
+     *
+     * @param id the index of the element to be removed
+     * @return the element that was removed from the repository
+     */
+    public Optional<Contract> remove(int id) {
+        int index = -1;
+        for (int i = 0; i < size; i++) {
+            if (array[i].getId() == id) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            Contract[] newArray = new Contract[size - 1];
+            for (int i = 0; i < index; i++) {
+                newArray[i] = array[i];
+            }
+            for (int i = index + 1; i < size; i++) {
+                newArray[i - 1] = array[i];
+            }
+            array = newArray;
+            size -= 1;
+            return Optional.of(newArray[index]);
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    /**
      * Removes the first occurrence of the specified element from this repository,
      * if it is present. If the repository does not contain the element, it is
      * unchanged.
@@ -109,21 +139,6 @@ public class Repository {
         }
         array = null;
         size = 0;
-    }
-
-    /**
-     * Returns {@code true} if this repository contains the specified element.
-     *
-     * @param t element whose presence in this repository is to be tested
-     * @return {@code true} if this repository contains the specified element
-     */
-    public boolean contains(Contract t) {
-        for (int i = 0; i < size; i++) {
-            if (array[i].equals(t)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
