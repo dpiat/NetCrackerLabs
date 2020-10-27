@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Contract {
     private long id;
-    private long numberConract;
+    private long numberContract;
     private Date startContract;
     private Date endContract;
     private Client client;
 
-    public Contract(long id, long numberConract, Date startContract, Date endContract, Client client) {
+    public Contract(long id, long numberContract, Date startContract, Date endContract, Client client) {
         this.id = id;
-        this.numberConract = numberConract;
+        this.numberContract = numberContract;
         this.startContract = startContract;
         this.endContract = endContract;
         this.client = client;
@@ -25,12 +25,12 @@ public class Contract {
         this.id = id;
     }
 
-    public long getNumberConract() {
-        return numberConract;
+    public long getNumberContract() {
+        return numberContract;
     }
 
-    public void setNumberConract(long numberConract) {
-        this.numberConract = numberConract;
+    public void setNumberContract(long numberContract) {
+        this.numberContract = numberContract;
     }
 
     public Date getStartContract() {
@@ -63,7 +63,7 @@ public class Contract {
         if (o == null || getClass() != o.getClass()) return false;
         Contract contract = (Contract) o;
         return id == contract.id &&
-                numberConract == contract.numberConract &&
+                numberContract == contract.numberContract &&
                 Objects.equals(startContract, contract.startContract) &&
                 Objects.equals(endContract, contract.endContract) &&
                 Objects.equals(client, contract.client);
@@ -71,6 +71,6 @@ public class Contract {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, numberConract, startContract, endContract, client);
+        return Objects.hash(id, numberContract, startContract, endContract, client);
     }
 }
