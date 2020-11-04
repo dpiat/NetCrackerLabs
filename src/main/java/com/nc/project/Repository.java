@@ -1,6 +1,7 @@
 package com.nc.project;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 /**
  * This is a class container for Contract
@@ -8,7 +9,7 @@ import java.util.*;
  * @author  Dmitrii Piataikin
  * @version 1.0
  */
-public class Repository {
+public class Repository<T> implements IRepository<T>{
     private int size ;
     private Contract[] array;
 
@@ -157,5 +158,22 @@ public class Repository {
         }
         sb.append(']');
         return sb.toString();
+    }
+
+    @Override
+    public void sortBy(Comparator<? super Contract> comparator) {
+        ISorter<Contract> sorter = new QuickSorter<>();
+        sorter.sort(array, comparator);
+    }
+
+    @Override
+    public Repository<T> searchBy(Predicate predicate) {
+        Repository<T> repository = new Repository<>();
+        for (Contract contract : array) {
+            if (predicate.test(contract)) {
+                repository.add(contract);
+            }
+        }
+        return repository;
     }
 }
