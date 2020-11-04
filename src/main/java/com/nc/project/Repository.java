@@ -160,12 +160,23 @@ public class Repository<T> implements IRepository<T> {
         return sb.toString();
     }
 
+    /**
+     * Sorts contract with given comparator
+     *
+     * @param comparator
+     */
     @Override
     public void sortBy(Comparator<? super Contract> comparator) {
         ISorter<Contract> sorter = new BubbleSorter<>();
         sorter.sort(array, comparator);
     }
 
+    /**
+     * Returns repository with elems that satisfy the predicate
+     * 
+     * @param predicate
+     * @return
+     */
     @Override
     public Repository<T> searchBy(Predicate<T> predicate) {
         Repository<T> repository = new Repository<>();
