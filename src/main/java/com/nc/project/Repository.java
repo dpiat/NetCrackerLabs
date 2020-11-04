@@ -167,10 +167,10 @@ public class Repository<T> implements IRepository<T>{
     }
 
     @Override
-    public Repository<T> searchBy(Predicate predicate) {
+    public Repository<T> searchBy(Predicate<T> predicate) {
         Repository<T> repository = new Repository<>();
         for (Contract contract : array) {
-            if (predicate.test(contract)) {
+            if (predicate.test((T) contract)) {
                 repository.add(contract);
             }
         }
