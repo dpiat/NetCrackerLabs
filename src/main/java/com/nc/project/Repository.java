@@ -9,7 +9,7 @@ import java.util.function.Predicate;
  * @author  Dmitrii Piataikin
  * @version 1.0
  */
-public class Repository<T> implements IRepository<T>{
+public class Repository<T> implements IRepository<T> {
     private int size ;
     private Contract[] array;
 
@@ -162,7 +162,7 @@ public class Repository<T> implements IRepository<T>{
 
     @Override
     public void sortBy(Comparator<? super Contract> comparator) {
-        ISorter<Contract> sorter = new QuickSorter<>();
+        ISorter<Contract> sorter = new BubbleSorter<>();
         sorter.sort(array, comparator);
     }
 

@@ -1,5 +1,6 @@
 import com.nc.project.Client;
 import com.nc.project.Contract;
+import com.nc.project.InternetContract;
 import com.nc.project.Repository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -102,6 +103,32 @@ public class ContainerTesting {
             @Override
             public boolean test(Contract contract) {
                 return contract.getClient().getFIO().equals("Piatakin Dmitrii Igorevich");
+            }
+        };
+
+        contractContainer = contractContainer.searchBy(contractPredicate);
+
+        Assert.assertEquals(contractContainer.size(), 2);
+    }
+
+    @Test
+    public void testSearchByMaxSpeedInInternetContract() {
+        Repository<InternetContract> contractContainer = new Repository<>();
+        Assert.assertEquals(0, contractContainer.size());
+        InternetContract contract1 = new InternetContract(1, 1, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), "Male",111111111L), 200);
+        InternetContract contract2 = new InternetContract(3, 3, new Date(100L), new Date(101L), new Client(2, "Podruchnie Genadiy Vladimirovich", new Date(1998, Calendar.MARCH, 18), "Male", 1111112323L), 220);
+        InternetContract contract3 = new InternetContract(2, 2, new Date(100L), new Date(101L), new Client(1, "Piatakin Dmitrii Igorevich", new Date(2000, Calendar.JULY, 20), "Male",111111111L), 190);
+        InternetContract contract4 = new InternetContract(4, 4, new Date(100L), new Date(101L), new Client(2, "Podruchnie Genadiy Vladimirovich", new Date(1998, Calendar.MARCH, 18), "Male", 1111112323L), 240);
+        contractContainer.add(contract1);
+        contractContainer.add(contract2);
+        contractContainer.add(contract3);
+        contractContainer.add(contract4);
+        Assert.assertEquals(4, contractContainer.size());
+
+        Predicate<InternetContract> contractPredicate = new Predicate<InternetContract>() {
+            @Override
+            public boolean test(InternetContract contract) {
+                return contract.getMaxSpeed() > 200;
             }
         };
 
