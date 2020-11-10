@@ -1,4 +1,7 @@
-package com.nc.project;
+package com.nc.project.model.contract;
+
+import com.nc.project.model.client.Client;
+
 import java.util.Date;
 import java.util.Objects;
 

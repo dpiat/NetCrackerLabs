@@ -1,4 +1,9 @@
-package com.nc.project;
+package com.nc.project.model.container;
+
+import com.nc.project.model.contract.Contract;
+import com.nc.project.repository.IRepository;
+import com.nc.project.repository.ISorter;
+import com.nc.project.sorter.BubbleSorter;
 
 import java.util.*;
 import java.util.function.Predicate;

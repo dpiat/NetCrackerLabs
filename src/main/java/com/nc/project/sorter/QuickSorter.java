@@ -1,11 +1,14 @@
-package com.nc.project;
+package com.nc.project.sorter;
 
+
+import com.nc.project.model.contract.Contract;
+import com.nc.project.repository.ISorter;
 
 import java.util.Comparator;
 
 public class QuickSorter<T> implements ISorter<T> {
     @Override
-    public void sort ( Contract[] contracts, Comparator<? super Contract> comparator ) {
+    public void sort (Contract[] contracts, Comparator<? super Contract> comparator ) {
         quickSort( contracts, comparator, 0, contracts.length-1 );
     }
 

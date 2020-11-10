@@ -1,4 +1,6 @@
-package com.nc.project;
+package com.nc.project.repository;
+
+import com.nc.project.model.contract.Contract;
 
 import java.util.Comparator;
 

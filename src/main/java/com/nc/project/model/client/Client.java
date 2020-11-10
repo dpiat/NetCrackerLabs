@@ -1,4 +1,4 @@
-package com.nc.project;
+package com.nc.project.model.client;
 
 import java.util.Date;
 import java.util.Objects;

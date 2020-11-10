@@ -1,7 +1,7 @@
-import com.nc.project.Client;
-import com.nc.project.Contract;
-import com.nc.project.InternetContract;
-import com.nc.project.Repository;
+import com.nc.project.model.client.Client;
+import com.nc.project.model.contract.Contract;
+import com.nc.project.model.contract.InternetContract;
+import com.nc.project.model.container.Repository;
 import org.junit.Assert;
 import org.junit.Test;
 

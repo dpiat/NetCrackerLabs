@@ -1,4 +1,7 @@
-package com.nc.project;
+package com.nc.project.sorter;
+
+import com.nc.project.model.contract.Contract;
+import com.nc.project.repository.ISorter;
 
 import java.util.Comparator;
 
