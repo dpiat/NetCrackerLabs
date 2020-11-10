@@ -10,8 +10,8 @@ public class MobileContract extends Contract {
     private long cntMessages;
     private long cntGb;
 
-    public MobileContract(long id, long numberConract, Date startContract, Date endContract, Client client, long cntMin, long cntMessages, long cntGb) {
-        super(id, numberConract, startContract, endContract, client);
+    public MobileContract(long id, long numberContract, Date startContract, Date endContract, Client client, long cntMin, long cntMessages, long cntGb) {
+        super(id, numberContract, startContract, endContract, client);
         this.cntMin = cntMin;
         this.cntMessages = cntMessages;
         this.cntGb = cntGb;

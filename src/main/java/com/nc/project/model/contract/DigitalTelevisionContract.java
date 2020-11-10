@@ -6,18 +6,19 @@ import java.util.Date;
 import java.util.Objects;
 
 public class DigitalTelevisionContract extends Contract {
-    ChannelPackage channelPackage;
+    String channelPackage;
 
-    public DigitalTelevisionContract(long id, long numberConract, Date startContract, Date endContract, Client client, ChannelPackage channelPackage) {
-        super(id, numberConract, startContract, endContract, client);
+    public DigitalTelevisionContract(long id, long numberContract, Date startContract, Date endContract, Client client, String channelPackage) {
+        super(id, numberContract, startContract, endContract, client);
         this.channelPackage = channelPackage;
     }
 
-    public ChannelPackage getChannelPackage() {
+
+    public String getChannelPackage() {
         return channelPackage;
     }
 
-    public void setChannelPackage(ChannelPackage channelPackage) {
+    public void setChannelPackage(String channelPackage) {
         this.channelPackage = channelPackage;
     }
 
