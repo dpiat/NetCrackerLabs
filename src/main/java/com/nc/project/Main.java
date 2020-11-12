@@ -42,15 +42,15 @@ public class Main {
                                 Integer.parseInt(endContract[0])
                         ),
                         clientFactory.getClient(
-                            Long.parseLong(values[4]),
-                            values[5],
-                            new Date(
-                                Integer.parseInt(birthday[2]),
-                                Integer.parseInt(birthday[1]),
-                                Integer.parseInt(birthday[0])
-                            ),
-                            values[7],
-                            Long.parseLong(values[8])
+                                Long.parseLong(values[4]),
+                                values[5],
+                                new Date(
+                                        Integer.parseInt(birthday[2]),
+                                        Integer.parseInt(birthday[1]),
+                                        Integer.parseInt(birthday[0])
+                                ),
+                                values[7],
+                                Long.parseLong(values[8])
                         ),
                         values[9]
                 );

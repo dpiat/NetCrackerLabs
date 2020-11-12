@@ -19,32 +19,32 @@ public class ContractFactory {
         switch (valuesAddInfo[0]) {
             case "MobileContract":
                 return new MobileContract(
-                    id,
-                    numberContract,
-                    startContract,
-                    endContract,
-                    client,
-                    Long.parseLong(valuesAddInfo[1]),
-                    Long.parseLong(valuesAddInfo[2]),
-                    Long.parseLong(valuesAddInfo[3])
+                        id,
+                        numberContract,
+                        startContract,
+                        endContract,
+                        client,
+                        Long.parseLong(valuesAddInfo[1]),
+                        Long.parseLong(valuesAddInfo[2]),
+                        Long.parseLong(valuesAddInfo[3])
                 );
             case "DigitalTelevisionContract":
                 return new DigitalTelevisionContract(
-                    id,
-                    numberContract,
-                    startContract,
-                    endContract,
-                    client,
-                    valuesAddInfo[1]
+                        id,
+                        numberContract,
+                        startContract,
+                        endContract,
+                        client,
+                        valuesAddInfo[1]
                 );
             case "InternetContract":
                 return new InternetContract(
-                    id,
-                    numberContract,
-                    startContract,
-                    endContract,
-                    client,
-                    Long.parseLong(valuesAddInfo[1])
+                        id,
+                        numberContract,
+                        startContract,
+                        endContract,
+                        client,
+                        Long.parseLong(valuesAddInfo[1])
                 );
             default:
                 throw new IllegalStateException("Unexpected value: " + valuesAddInfo[0]);
