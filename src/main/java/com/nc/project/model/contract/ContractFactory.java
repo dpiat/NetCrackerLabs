@@ -15,7 +15,7 @@ public class ContractFactory {
                 return contract;
             }
         }
-        java.lang.String[] valuesAddInfo = addInfo.split(";");
+        String[] valuesAddInfo = addInfo.split(";");
         switch (valuesAddInfo[0]) {
             case "MobileContract":
                 return new MobileContract(

@@ -35,4 +35,16 @@ public class DigitalTelevisionContract extends Contract {
     public int hashCode() {
         return Objects.hash(super.hashCode(), channelPackage);
     }
+
+    @Override
+    public String toString() {
+        return "DigitalTelevisionContract{" +
+                "channelPackage='" + channelPackage + '\'' +
+                ", id=" + id +
+                ", numberContract=" + numberContract +
+                ", startContract=" + startContract +
+                ", endContract=" + endContract +
+                ", client=" + client +
+                '}';
+    }
 }

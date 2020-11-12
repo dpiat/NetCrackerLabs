@@ -6,6 +6,7 @@ import com.nc.project.repository.ISorter;
 import com.nc.project.sorter.BubbleSorter;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
@@ -159,7 +160,7 @@ public class Repository<T> implements IRepository<T> {
         for (int i = 0; i < size; i++) {
             sb.append(array[i].toString());
             if (i + 1 != size) {
-                sb.append(',').append(' ');
+                sb.append(",\n").append(' ');
             }
         }
         sb.append(']');

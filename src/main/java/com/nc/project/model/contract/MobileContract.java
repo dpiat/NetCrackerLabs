@@ -56,5 +56,19 @@ public class MobileContract extends Contract {
     public int hashCode() {
         return Objects.hash(super.hashCode(), cntMin, cntMessages, cntGb);
     }
+
+    @Override
+    public String toString() {
+        return "MobileContract{" +
+                "cntMin=" + cntMin +
+                ", cntMessages=" + cntMessages +
+                ", cntGb=" + cntGb +
+                ", id=" + id +
+                ", numberContract=" + numberContract +
+                ", startContract=" + startContract +
+                ", endContract=" + endContract +
+                ", client=" + client +
+                '}';
+    }
 }
 

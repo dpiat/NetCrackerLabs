@@ -6,11 +6,11 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Contract {
-    private long id;
-    private long numberContract;
-    private Date startContract;
-    private Date endContract;
-    private Client client;
+    protected long id;
+    protected long numberContract;
+    protected Date startContract;
+    protected Date endContract;
+    protected Client client;
 
     public Contract(long id, long numberContract, Date startContract, Date endContract, Client client) {
         this.id = id;
@@ -75,5 +75,16 @@ public class Contract {
     @Override
     public int hashCode() {
         return Objects.hash(id, numberContract, startContract, endContract, client);
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", numberContract=" + numberContract +
+                ", startContract=" + startContract +
+                ", endContract=" + endContract +
+                ", client=" + client +
+                '}';
     }
 }

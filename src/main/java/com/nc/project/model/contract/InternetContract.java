@@ -34,4 +34,16 @@ public class InternetContract extends Contract {
     public int hashCode() {
         return Objects.hash(super.hashCode(), maxSpeed);
     }
+
+    @Override
+    public String toString() {
+        return "InternetContract{" +
+                "maxSpeed=" + maxSpeed +
+                ", id=" + id +
+                ", numberContract=" + numberContract +
+                ", startContract=" + startContract +
+                ", endContract=" + endContract +
+                ", client=" + client +
+                '}';
+    }
 }

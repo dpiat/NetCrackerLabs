@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        String csvFilePath = "src\\main\\resources\\foreign_names.csv";
+        String csvFilePath = "src\\main\\resources\\contracts.csv";
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFilePath));
             Repository<Contract> contractRepository = new Repository<>();
@@ -24,10 +24,10 @@ public class Main {
             ContractFactory conctractFactory = new ContractFactory();
             String line = bufferedReader.readLine(); // skip first row
             while ((line = bufferedReader.readLine()) != null) {
-                String[] values = line.split(";");
-                String[] startContract = values[3].split("\\.");
-                String[] endContract = values[3].split("\\.");
-                String[] birthday = values[6].split("\\.");
+                String[] values = line.split(",");
+                String[] startContract = values[2].split("-");
+                String[] endContract = values[3].split("-");
+                String[] birthday = values[6].split("-");
                 Contract contract = conctractFactory.getContract(
                         Long.parseLong(values[0]),
                         Long.parseLong(values[1]),
@@ -52,10 +52,11 @@ public class Main {
                             values[7],
                             Long.parseLong(values[8])
                         ),
-                        values[8]
+                        values[9]
                 );
                 contractRepository.add(contract);
             }
+            System.out.println(contractRepository.toString());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

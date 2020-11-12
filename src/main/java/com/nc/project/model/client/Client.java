@@ -82,4 +82,15 @@ public class Client {
     public int hashCode() {
         return Objects.hash(id, FIO, birthday, gender, passport);
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", FIO='" + FIO + '\'' +
+                ", birthday=" + birthday +
+                ", gender='" + gender + '\'' +
+                ", passport=" + passport +
+                '}';
+    }
 }
