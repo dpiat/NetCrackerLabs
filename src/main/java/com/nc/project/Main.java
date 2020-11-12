@@ -21,14 +21,14 @@ public class Main {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFilePath));
             Repository<Contract> contractRepository = new Repository<>();
             ClientFactory clientFactory = new ClientFactory();
-            ContractFactory conctractFactory = new ContractFactory();
+            ContractFactory contractFactory = new ContractFactory();
             String line = bufferedReader.readLine(); // skip first row
             while ((line = bufferedReader.readLine()) != null) {
                 String[] values = line.split(",");
                 String[] startContract = values[2].split("-");
                 String[] endContract = values[3].split("-");
                 String[] birthday = values[6].split("-");
-                Contract contract = conctractFactory.getContract(
+                Contract contract = contractFactory.getContract(
                         Long.parseLong(values[0]),
                         Long.parseLong(values[1]),
                         new Date(
@@ -41,7 +41,7 @@ public class Main {
                                 Integer.parseInt(endContract[1]),
                                 Integer.parseInt(endContract[0])
                         ),
-                        new Client(
+                        clientFactory.getClient(
                             Long.parseLong(values[4]),
                             values[5],
                             new Date(
