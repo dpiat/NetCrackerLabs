@@ -4,10 +4,19 @@ public class ResultValidation {
     String status;
     String description;
 
+    /**
+     * Uses when status is OK
+     * @param status - status validation
+     */
     public ResultValidation(String status) {
         this.status = status;
     }
 
+    /**
+     * Uses when status is not OK
+     * @param status - status validation
+     * @param description - description if status is error
+     */
     public ResultValidation(String status, String description) {
         this.status = status;
         this.description = description;
