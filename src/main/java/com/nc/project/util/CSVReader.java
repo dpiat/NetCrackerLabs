@@ -4,6 +4,10 @@ import com.nc.project.model.client.ClientFactory;
 import com.nc.project.model.container.Repository;
 import com.nc.project.model.contract.Contract;
 import com.nc.project.model.contract.ContractFactory;
+import com.nc.project.util.validator.BirthClientValidator;
+import com.nc.project.util.validator.NumberContractValidator;
+import com.nc.project.util.validator.Validator;
+import com.nc.project.util.validator.ValidatorLoader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -58,6 +62,10 @@ public class CSVReader {
                         ),
                         values[9]
                 );
+                Validator[] validators = new Validator[2];
+                validators[0] = new BirthClientValidator();
+                validators[1] = new NumberContractValidator();
+                ValidatorLoader.doValidation(validators, contract);
                 contractRepository.add(contract);
             }
         } catch (FileNotFoundException e) {
