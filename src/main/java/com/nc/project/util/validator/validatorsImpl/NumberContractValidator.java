@@ -1,6 +1,8 @@
-package com.nc.project.util.validator;
+package com.nc.project.util.validator.validatorsImpl;
 
 import com.nc.project.model.contract.Contract;
+import com.nc.project.util.validator.ResultValidation;
+import com.nc.project.util.validator.Validator;
 
 public class NumberContractValidator implements Validator {
     @Override

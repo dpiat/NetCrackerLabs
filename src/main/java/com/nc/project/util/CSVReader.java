@@ -4,8 +4,9 @@ import com.nc.project.model.client.ClientFactory;
 import com.nc.project.model.container.Repository;
 import com.nc.project.model.contract.Contract;
 import com.nc.project.model.contract.ContractFactory;
-import com.nc.project.util.validator.BirthClientValidator;
-import com.nc.project.util.validator.NumberContractValidator;
+import com.nc.project.util.injector.AutoInjectable;
+import com.nc.project.util.validator.validatorsImpl.BirthClientValidator;
+import com.nc.project.util.validator.validatorsImpl.NumberContractValidator;
 import com.nc.project.util.validator.Validator;
 import com.nc.project.util.validator.ValidatorLoader;
 
@@ -13,24 +14,27 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CSVReader {
 
-    private CSVReader() {};
 
+    @AutoInjectable(parameter = Validator.class)
+    private ArrayList<Validator> validators;
     /**
      * Reads from csv file
      *
      * @param csvFilePath - path of csv file
      * @param contractRepository - repository for storage of contracts
      */
-    public static void readCSV(String csvFilePath, Repository<Contract> contractRepository) {
+    public void readCSV(String csvFilePath, Repository<Contract> contractRepository) {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFilePath));
             ClientFactory clientFactory = new ClientFactory();
             ContractFactory contractFactory = new ContractFactory();
             String line = bufferedReader.readLine(); // skip first row
+
             while ((line = bufferedReader.readLine()) != null) {
                 String[] values = line.split(",");
                 String[] startContract = values[2].split("-");
@@ -62,9 +66,6 @@ public class CSVReader {
                         ),
                         values[9]
                 );
-                Validator[] validators = new Validator[2];
-                validators[0] = new BirthClientValidator();
-                validators[1] = new NumberContractValidator();
                 ValidatorLoader.doValidation(validators, contract);
                 contractRepository.add(contract);
             }

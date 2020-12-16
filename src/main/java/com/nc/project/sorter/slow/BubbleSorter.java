@@ -1,4 +1,4 @@
-package com.nc.project.sorter;
+package com.nc.project.sorter.slow;
 
 import com.nc.project.model.contract.Contract;
 import com.nc.project.repository.ISorter;

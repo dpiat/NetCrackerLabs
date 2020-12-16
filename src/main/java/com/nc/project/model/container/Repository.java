@@ -3,10 +3,10 @@ package com.nc.project.model.container;
 import com.nc.project.model.contract.Contract;
 import com.nc.project.repository.IRepository;
 import com.nc.project.repository.ISorter;
-import com.nc.project.sorter.BubbleSorter;
+import com.nc.project.sorter.slow.BubbleSorter;
+import com.nc.project.util.injector.AutoInjectable;
 
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
@@ -16,6 +16,7 @@ import java.util.function.Predicate;
  * @version 1.0
  */
 public class Repository<T> implements IRepository<T> {
+    @AutoInjectable(parameter = Contract.class)
     ISorter<Contract> sorter = new BubbleSorter<>();
     private int size ;
     private Contract[] array;
