@@ -8,27 +8,16 @@ import java.util.List;
 import java.util.Set;
 
 public class ImplementationFinder {
-
     /**
      * Метод принимает название пакета и ищет в нем
      * имплементирующие классы
      *
-     * @param packageName - название интерфейса
-     * @return название имплементирующего класса
-     */
-    public static Class[] getImplementationClasses(String packageName) throws IOException, ClassNotFoundException {
-        return getClasses(packageName);
-    }
-
-    /**
-     * Scans all classes accessible from the context class loader which belong to the given package and subpackages.
-     *
-     * @param packageName The base package
-     * @return The classes
+     * @param packageName название пакета
+     * @return имплементирующие классы
      * @throws ClassNotFoundException
      * @throws IOException
      */
-    private static Class[] getClasses(String packageName)
+    public static Class[] getImplementationClasses(String packageName)
             throws ClassNotFoundException, IOException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         assert classLoader != null;
@@ -47,11 +36,11 @@ public class ImplementationFinder {
     }
 
     /**
-     * Recursive method used to find all classes in a given directory and subdirs.
+     * Рекурсивный метод, используемый для поиска всех классов в данном каталоге и подкаталогах
      *
-     * @param directory   The base directory
-     * @param packageName The package name for classes found inside the base directory
-     * @return The classes
+     * @param directory директория
+     * @param packageName название пакета
+     * @return имплементирующие классы
      * @throws ClassNotFoundException
      */
     private static List<Class> findClasses(File directory, String packageName) throws ClassNotFoundException {

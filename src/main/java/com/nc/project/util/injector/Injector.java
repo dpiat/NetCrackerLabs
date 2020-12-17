@@ -1,5 +1,8 @@
 package com.nc.project.util.injector;
 
+import com.nc.project.util.CountSortersException;
+import com.nc.project.util.CountSortersException;
+
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -20,8 +23,8 @@ public class Injector {
 
     /**
      * Метод этого класса принимает репозиторий, если поле имеет
-     * анотацию "@AutoInjectable", то ищет реализацию в файле properties,
-     * создает и записывают ссылку на экземпляр нужного класса
+     * анотацию "@AutoInjectable", то ищет реализацию в указанных пакетах,
+     * создает и записывают ссылку на экземпляр нужного объекта
      *
      * @param <T> - тип передаваемого объекта
      * @param object - объект, который требует инъекции
@@ -55,7 +58,7 @@ public class Injector {
                             o = cl.newInstance();
                             cnt++;
                             if (cnt != 1) {
-                                throw new Exception ( "Find more than one implementation class" );
+                                throw new CountSortersException();
                             }
                         }
                     }
