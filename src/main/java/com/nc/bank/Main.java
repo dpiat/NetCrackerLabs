@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         Cashbox cashbox = new Cashbox(INIT_CASH);
-
+        ClientFactory clientFactory = new ClientFactory(CLIENTS_PER_MINUTE);
+        clientFactory.start();
     }
 }
