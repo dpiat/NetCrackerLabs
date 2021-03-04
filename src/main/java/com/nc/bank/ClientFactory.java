@@ -1,15 +1,24 @@
 package com.nc.bank;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClientFactory extends Thread{
-    private int clientsPerMinute;
-    private List<Client> clients;
+    private static int clientsPerMinute;
+    private static List<Clerk> clerks = null;
 
-    public ClientFactory(int clientsPerMinute) {
-        this.clientsPerMinute = clientsPerMinute;
-        clients = new ArrayList<>();
+    public ClientFactory(int clientsPerMinute, List<Clerk> clerks) {
+        ClientFactory.clientsPerMinute = clientsPerMinute;
+        ClientFactory.clerks = clerks;
+    }
+
+    public void placeIntoBestQueue(Client client) {
+        Clerk best = clerks.get(0);
+        for (Clerk clerk: clerks) {
+            if (clerk.getQueue().size() < best.getQueue().size()) {
+                best = clerk;
+            }
+        }
+        best.getQueue().add(client);
     }
 
     @Override
@@ -17,7 +26,8 @@ public class ClientFactory extends Thread{
         while (true) {
             System.out.println("ClientFactory: I'm creating new clients");
             for (int i = 0; i < clientsPerMinute; i++) {
-                clients.add(new Client());
+                Client client = new Client();
+                placeIntoBestQueue(client);
             }
             System.out.println("ClientFactory: I've finished creating clients, now i'm going to sleep, zzZzzZ");
             try {
