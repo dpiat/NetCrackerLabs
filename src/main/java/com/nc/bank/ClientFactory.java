@@ -39,6 +39,7 @@ public class ClientFactory extends Thread{
             System.out.println("ClientFactory: I'm creating new clients");
             for (int i = 0; i < clientsPerMinute; i++) {
                 Client client = new Client(getRandomOperation(), getRandomNumber(100, 1000));
+                //Client client = new Client(Operation.WITHDRAW, getRandomNumber(100, 1000));
                 placeIntoBestQueue(client);
             }
             System.out.println("ClientFactory: I've finished creating clients, now i'm going to sleep, zzZzzZ");

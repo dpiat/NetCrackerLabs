@@ -14,7 +14,7 @@ public class Clerk extends Thread {
         while (true) {
             while (!queue.isEmpty()) { // работаем с клиентами
                 Client client = queue.pollFirst();
-                System.out.println("Clerk - " + Thread.currentThread().getName() +
+                System.out.println("Clerk - " + Thread.currentThread().getId() +
                         " is maintaining a client. Operation: " + client.getOperation().toString() + ", money: " + client.getMoney());
                 switch (client.getOperation()) {
                     case ADD:
@@ -24,18 +24,18 @@ public class Clerk extends Thread {
                         if (cashbox.getCash() - client.getMoney() >= 0) {
                             cashbox.withdraw(client.getMoney());
                         } else {
-                            System.out.println("Can't maintain client");
+                            System.out.println("Clerk - " + Thread.currentThread().getId() + " can't maintain a client");
                         }
                 }
                 try {
                     Thread.sleep(serviceTime);
-                    System.out.println("Clerk - " + Thread.currentThread().getName() + " has finished maintaining a client");
+                    System.out.println("Clerk - " + Thread.currentThread().getId() + " has finished maintaining a client");
                 } catch (InterruptedException e) {
                     e.printStackTrace(System.out);
                 }
             }
 
-            System.out.println("Clerk - " + Thread.currentThread().getName() + " is free");
+            System.out.println("Clerk - " + Thread.currentThread().getId() + " is free");
             try {
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
