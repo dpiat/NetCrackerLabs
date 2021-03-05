@@ -35,6 +35,7 @@ public class Clerk extends Thread {
                 }
             }
 
+
             System.out.println("Clerk - " + Thread.currentThread().getId() + " is free");
             try {
                 Thread.sleep(10000);
