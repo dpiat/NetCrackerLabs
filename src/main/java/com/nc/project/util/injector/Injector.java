@@ -1,5 +1,6 @@
 package com.nc.project.util.injector;
 
+import com.nc.project.exception.InjectException;
 import com.nc.project.util.CountSortersException;
 import com.nc.project.util.CountSortersException;
 
@@ -12,7 +13,7 @@ import java.util.*;
 public class Injector {
     private static ArrayList<Class> configurationClasses;
 
-    public Injector() throws IOException, ClassNotFoundException {
+    public Injector() throws InjectException {
         configurationClasses = new ArrayList<>();
         String[] pathPackages = this.getClass().getAnnotation(Configuration.class).packages();
         for (String pathPackage : pathPackages) {
@@ -28,12 +29,8 @@ public class Injector {
      *
      * @param <T> - тип передаваемого объекта
      * @param object - объект, который требует инъекции
-     * @return
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     * @throws ClassNotFoundException
      */
-    public <T> T inject(T object) throws Exception {
+    public <T> T inject(T object) throws InjectException {
         Class<? extends Object> objectClass = object.getClass();
         Field[] fields = objectClass.getDeclaredFields();
         for (Field field : fields) {
@@ -44,26 +41,44 @@ public class Injector {
                     ArrayList<Object> arrayList = new ArrayList<>();
                     for (Class cl : configurationClasses) {
                         if (field.getAnnotation(AutoInjectable.class).parameter().isAssignableFrom(cl)) {
-                            Object o = cl.newInstance();
+                            Object o = null;
+                            try {
+                                o = cl.newInstance();
+                            } catch (InstantiationException | IllegalAccessException e) {
+                                throw new InjectException(e.getMessage());
+                            }
                             arrayList.add(o);
                         }
                     }
-                    field.set(object, arrayList);
+                    try {
+                        field.set(object, arrayList);
+                    } catch (IllegalAccessException e) {
+                        throw new InjectException(e.getMessage());
+                    }
 
                 } else {
                     int cnt = 0;
                     Object o = null;
                     for (Class cl : configurationClasses) {
                         if (field.getType().isAssignableFrom(cl)) {
-                            o = cl.newInstance();
+                            try {
+                                o = cl.newInstance();
+                            } catch (InstantiationException | IllegalAccessException e) {
+                                throw new InjectException(e.getMessage());
+                            }
                             cnt++;
                             if (cnt != 1) {
-                                throw new CountSortersException();
+                                throw new InjectException("Found more than one implementation class");
                             }
                         }
                     }
-                    if (o != null)
-                        field.set(object, o);
+                    if (o != null) {
+                        try {
+                            field.set(object, o);
+                        } catch (IllegalAccessException e) {
+                            throw new InjectException(e.getMessage());
+                        }
+                    }
                 }
             }
         }

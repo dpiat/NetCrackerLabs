@@ -1,5 +1,7 @@
 package com.nc.project.util.injector;
 
+import com.nc.project.exception.InjectException;
+
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,11 +20,16 @@ public class ImplementationFinder {
      * @throws IOException
      */
     public static Class[] getImplementationClasses(String packageName)
-            throws ClassNotFoundException, IOException {
+            throws InjectException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         assert classLoader != null;
         String path = packageName.replace('.', '/');
-        Enumeration<URL> resources = classLoader.getResources(path);
+        Enumeration<URL> resources = null;
+        try {
+            resources = classLoader.getResources(path);
+        } catch (IOException e) {
+            throw new InjectException(e.getMessage());
+        }
         List<File> dirs = new ArrayList<File>();
         while (resources.hasMoreElements()) {
             URL resource = resources.nextElement();
@@ -43,7 +50,7 @@ public class ImplementationFinder {
      * @return имплементирующие классы
      * @throws ClassNotFoundException
      */
-    private static List<Class> findClasses(File directory, String packageName) throws ClassNotFoundException {
+    private static List<Class> findClasses(File directory, String packageName) throws InjectException {
         List<Class> classes = new ArrayList<Class>();
         if (!directory.exists()) {
             return classes;
@@ -54,7 +61,11 @@ public class ImplementationFinder {
                 assert !file.getName().contains(".");
                 classes.addAll(findClasses(file, packageName + "." + file.getName()));
             } else if (file.getName().endsWith(".class")) {
-                classes.add(Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6)));
+                try {
+                    classes.add(Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6)));
+                } catch (ClassNotFoundException e) {
+                    throw new InjectException(e.getMessage());
+                }
             }
         }
         return classes;
