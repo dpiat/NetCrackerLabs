@@ -37,10 +37,12 @@ public class Clerk extends Thread {
 
 
             System.out.println("Clerk - " + Thread.currentThread().getId() + " is free");
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace(System.out);
+            synchronized(this){
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

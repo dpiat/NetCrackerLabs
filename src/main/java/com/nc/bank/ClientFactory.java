@@ -20,6 +20,9 @@ public class ClientFactory extends Thread{
             }
         }
         best.getQueue().add(client);
+        synchronized (best) {
+            best.notify();
+        }
     }
 
 
