@@ -50,4 +50,45 @@ public class ContractFactory {
                 throw new IllegalStateException("Unexpected value: " + valuesAddInfo[0]);
         }
     }
+
+    public Contract getContract( long id, long numberContract, Date startContract, Client client, Date endContract, String channelPackage, String descriptor, long maxSpeed, long cntMin, long cntMessages, long cntGb) {
+        for (Contract contract : contracts) {
+            if (contract.getId() == id) {
+                return contract;
+            }
+        }
+        switch (descriptor) {
+            case "MobileContract":
+                return new MobileContract(
+                        id,
+                        numberContract,
+                        startContract,
+                        endContract,
+                        client,
+                        cntMin,
+                        cntMessages,
+                        cntGb
+                );
+            case "DigitalTelevisionContract":
+                return new DigitalTelevisionContract(
+                        id,
+                        numberContract,
+                        startContract,
+                        endContract,
+                        client,
+                        channelPackage
+                );
+            case "InternetContract":
+                return new InternetContract(
+                        id,
+                        numberContract,
+                        startContract,
+                        endContract,
+                        client,
+                        maxSpeed
+                );
+            default:
+                throw new IllegalStateException("Unexpected value: " + descriptor);
+        }
+    }
 }

@@ -3,13 +3,12 @@ package com.nc.project;
 import com.nc.project.exception.InjectException;
 import com.nc.project.model.container.Repository;
 import com.nc.project.model.contract.Contract;
-import com.nc.project.sorter.slow.BubbleSorter;
 import com.nc.project.util.CSVReader;
-import com.nc.project.util.db.RepositoryImpl;
+import com.nc.project.util.db.DBReaderImpl;
 import com.nc.project.util.injector.Injector;
 
-import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) throws InjectException {
@@ -22,9 +21,27 @@ public class Main {
         injector.inject(contractRepository);
         //System.out.println(contractRepository.toString());
 
-        RepositoryImpl repository = new RepositoryImpl();
+        DBReaderImpl dbReader = new DBReaderImpl();
+
+       /* for (int i = 0; i < contractRepository.size(); i++) {
+            Optional<Contract> contract = contractRepository.get(i);
+            if (contract.isPresent()) {
+                try {
+                    dbReader.saveContract(contract.get());
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }*/
+
         try {
-            repository.getAllClients();
+            dbReader.getAllClients();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            dbReader.getAllContracts();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
