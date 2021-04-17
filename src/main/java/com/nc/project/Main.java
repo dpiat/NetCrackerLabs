@@ -21,7 +21,7 @@ public class Main {
         injector.inject(contractRepository);
         //System.out.println(contractRepository.toString());
 
-        DBReaderImpl dbReader = new DBReaderImpl();
+        //DBReaderImpl dbReader = new DBReaderImpl();
 
        /* for (int i = 0; i < contractRepository.size(); i++) {
             Optional<Contract> contract = contractRepository.get(i);
@@ -34,7 +34,7 @@ public class Main {
             }
         }*/
 
-        try {
+        /*try {
             dbReader.getAllClients();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -44,6 +44,8 @@ public class Main {
             dbReader.getAllContracts();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
+        }*/
+
+
     }
 }

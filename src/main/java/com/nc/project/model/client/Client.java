@@ -1,11 +1,25 @@
 package com.nc.project.model.client;
 
+import com.nc.project.JAXB.AdapterDateXml;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 import java.util.Objects;
 
+@XmlRootElement(name="client")
+@XmlAccessorType(XmlAccessType.FIELD)
+@Getter
+@Setter
+@NoArgsConstructor
 public class Client {
     private long id;
     private String FIO;
+    @XmlJavaTypeAdapter(value = AdapterDateXml.class)
     private Date birthday;
     private String gender;
     private long passport;

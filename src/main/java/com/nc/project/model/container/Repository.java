@@ -1,11 +1,16 @@
 package com.nc.project.model.container;
 
+import com.nc.project.model.client.Client;
 import com.nc.project.model.contract.Contract;
 import com.nc.project.repository.IRepository;
 import com.nc.project.repository.ISorter;
 import com.nc.project.sorter.slow.BubbleSorter;
 import com.nc.project.util.injector.AutoInjectable;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -15,10 +20,15 @@ import java.util.function.Predicate;
  * @author  Dmitrii Piataikin
  * @version 1.0
  */
+@XmlRootElement(name="repository")
+@XmlSeeAlso({Client.class})
 public class Repository<T> implements IRepository<T> {
     @AutoInjectable(parameter = Contract.class)
     ISorter<Contract> sorter = new BubbleSorter<>();
     private int size ;
+
+    @XmlElementWrapper(name="contractsArray")
+    @XmlElement(name="contract")
     private Contract[] array;
 
     /**
