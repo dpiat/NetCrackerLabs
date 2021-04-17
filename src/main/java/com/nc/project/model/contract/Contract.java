@@ -1,15 +1,26 @@
 package com.nc.project.model.contract;
 
 import com.nc.project.model.client.Client;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.xml.bind.annotation.*;
 import java.util.Date;
 import java.util.Objects;
 
+@XmlRootElement(name="contract")
+@XmlSeeAlso({Client.class})
+@XmlAccessorType(XmlAccessType.FIELD)
+@Getter
+@Setter
+@NoArgsConstructor
 public class Contract {
     protected long id;
     protected long numberContract;
     protected Date startContract;
     protected Date endContract;
+    @XmlElement(name="client")
     protected Client client;
 
     public Contract(long id, long numberContract, Date startContract, Date endContract, Client client) {

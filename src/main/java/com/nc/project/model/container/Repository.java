@@ -21,11 +21,12 @@ import java.util.function.Predicate;
  * @version 1.0
  */
 @XmlRootElement(name="repository")
-@XmlSeeAlso({Client.class})
+@XmlSeeAlso({Contract.class})
 public class Repository<T> implements IRepository<T> {
     @AutoInjectable(parameter = Contract.class)
     ISorter<Contract> sorter = new BubbleSorter<>();
-    private int size ;
+    @XmlElement(name="size")
+    private int size;
 
     @XmlElementWrapper(name="contractsArray")
     @XmlElement(name="contract")
